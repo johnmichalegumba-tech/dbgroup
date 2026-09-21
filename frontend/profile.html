@@ -3,43 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Profile</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-brand">MyApp</div>
     <div class="nav-links">
-      <a href="dashboard.html" class="active">Dashboard</a>
-      <a href="profile.html">Profile</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html" class="active">Profile</a>
       <a href="#" id="logout">Logout</a>
     </div>
   </nav>
 
   <main class="container">
-    <h1 id="welcome">Loading...</h1>
-    <p class="subtitle">Welcome to your dashboard</p>
+    <h1>My Profile</h1>
+    <p class="subtitle">Your account information</p>
 
     <div class="info-card">
-      <h2>User Information</h2>
-      <p><strong>Name:</strong> <span id="userName">—</span></p>
-      <p><strong>Email:</strong> <span id="userEmail">—</span></p>
-    </div>
-
-    <div class="info-card">
-      <h2>Quick Actions</h2>
-      <p>Coming soon: notes, tasks, and more.</p>
+      <p><strong>Name:</strong> <span id="userName">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
     </div>
   </main>
 
   <script src="auth.js"></script>
   <script>
-    // Load profile data on page load
     (async () => {
       const data = await fetchProfile();
       if (!data) return;
 
-      document.getElementById("welcome").textContent = `Welcome back, ${data.user.name}!`;
       document.getElementById("userName").textContent = data.user.name;
       document.getElementById("userEmail").textContent = data.user.email;
     })();
